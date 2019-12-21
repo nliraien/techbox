@@ -9,7 +9,7 @@ using RPMovies.Data;
 namespace RPMovies.Migrations
 {
     [DbContext(typeof(RPMoviesContext))]
-    [Migration("20191220095825_InitialCreate")]
+    [Migration("20191221120133_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace RPMovies.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("Rating")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")
