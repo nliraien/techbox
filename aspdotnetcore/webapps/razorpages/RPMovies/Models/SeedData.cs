@@ -19,6 +19,30 @@ namespace RPMovies.Models
                     return;
                 }
 
+                context.Actors.AddRange(
+                    new Actor
+                    {
+                        FirstName = "Emma",
+                        LastName = "Watson",
+                        Gender = "female",
+                        Birthday = DateTime.Parse("1988-2-13")
+                    },
+                    new Actor
+                    {
+                        FirstName = "Ryan",
+                        LastName = "Reynold",
+                        Gender = "male",
+                        Birthday = DateTime.Parse("1980-4-1")
+                    },
+                    new Actor
+                    {
+                        FirstName = "Ryan",
+                        LastName = "Gosling",
+                        Gender = "male",
+                        Birthday = DateTime.Parse("1981-6-6")
+                    }
+                );
+
                 context.Movies.AddRange(
                     new Movie
                     {

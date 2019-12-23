@@ -11,5 +11,6 @@ namespace RPMovies.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actor> Actors { get; set; }
     }
 }
