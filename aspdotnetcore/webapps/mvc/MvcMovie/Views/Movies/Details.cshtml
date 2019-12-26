@@ -46,3 +46,11 @@
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<div>
+    @*Demo how to render partial view.*@
+    <partial name="../Shared/_MyClaimer" />
+    @await Html.PartialAsync("../Shared/_MyClaimer.cshtml")
+    @{
+        await Html.RenderPartialAsync("../Shared/_MyClaimer.cshtml");
+    }
+</div>

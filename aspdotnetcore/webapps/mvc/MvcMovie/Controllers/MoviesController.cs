@@ -56,6 +56,13 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
+            // This is to demo how to render partial view in action
+            if (id == -1)
+            {
+                return PartialView("../Shared/_MyClaimer");
+            }
+            //
+
             var movie = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
