@@ -20,6 +20,7 @@ namespace FeatureTryout.Pages_Notes
         }
 
         public Note Note { get; set; }
+        public Author Author { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,6 +28,13 @@ namespace FeatureTryout.Pages_Notes
             {
                 return NotFound();
             }
+            
+            // This is just an example of how to return partial view in handler method
+            if (id == -1)
+            {
+                return Partial("_NoteTag");
+            }
+            //
 
             Note = await _context.Notes.FirstOrDefaultAsync(m => m.ID == id);
 
@@ -34,6 +42,15 @@ namespace FeatureTryout.Pages_Notes
             {
                 return NotFound();
             }
+
+            Author = new Author
+            {
+                Name = "Bill",
+                Bio = "New editor on the rise."
+            };
+
+            ViewData["Key1"] = "Value1";
+
             return Page();
         }
     }

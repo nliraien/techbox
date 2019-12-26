@@ -42,5 +42,35 @@
     <a asp-page="./Index">Back to List</a>
 </div>
 <div>
-    @await Html.PartialAsync("_NoteTag")
+    @*Below are 3 different ways of rendering partial view inside a Razor page file.*@
+    <div>
+        <p>1. Use Partil Tag Helper: </p>
+        <partial name="_NoteTag" />
+    </div>
+    <div>
+        <p>2. Use the PartialAsync. It returns an IHtmlContent type wrapped in a Task&lt;TResult&gt;: </p>
+        @await Html.PartialAsync("_NoteTag")
+    </div>
+    <div>
+        <p>3. Use the RenderPartialAsync HTML Helper. It returns void so it must be called within a Razor code block: </p>
+        @{
+            await Html.RenderPartialAsync("_NoteTag");
+        }
+    </div>
+</div>
+<div>
+    @*Below is how to pass model into partial view.*@
+    @await Html.PartialAsync("_AuthorBio", @Model.Author)
+</div>
+<div>
+    @*Demo of passing ViewData into partial view.*@
+    <p>Key1: @ViewData["Key1"]</p>
+    @{
+        await Html.RenderPartialAsync("_AuthorBio",
+            @Model.Author,
+            new ViewDataDictionary(ViewData)
+            {
+                { "ExKey1", "ExValue1" }
+            });
+    }
 </div>
