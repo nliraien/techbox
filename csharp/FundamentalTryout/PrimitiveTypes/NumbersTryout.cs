@@ -18,6 +18,11 @@ namespace FundamentalTryout.PrimitiveTypes
             DoubleTypeBoundaryTryout();
         }
 
+        public static void DecimalTypeTryout()
+        {
+            DecimalHasGreaterPrecisionThanDouble();
+        }
+
         #region Int type
 
         private static void IntDividedByIntIsInt()
@@ -71,6 +76,20 @@ namespace FundamentalTryout.PrimitiveTypes
             Console.WriteLine($"What is double.MaxValue + 1000.0: { double.MaxValue + 1000.0 }");
             Console.WriteLine($"What is double.MaxValue + double.MaxValue: { double.MaxValue + double.MaxValue }");
             Console.WriteLine($"What is double.MinValue * 2: { double.MinValue * 2 }");
+        }
+        #endregion
+
+        #region Decimal type
+        private static void DecimalHasGreaterPrecisionThanDouble()
+        {
+            double a = 1.0;
+            double b = 3.0;
+            Console.WriteLine($"Precision of double type division 1.0 / 3.0: { a / b }");
+
+            // The M suffix is mandatory to indicate that a constant is decimal type
+            decimal c = 1.0M;
+            decimal d = 3.0M;
+            Console.WriteLine($"Precision of decimal type division 1.0 / 3.0: { c / d}");
         }
         #endregion
     }
