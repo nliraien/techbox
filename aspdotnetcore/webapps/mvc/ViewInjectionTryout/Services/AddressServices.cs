@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ViewInjectionTryout.Services
 {
-    public class AddressServices
+    public class AddressServices : IAddressServices
     {
         public List<string> ListCities()
         {

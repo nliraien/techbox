@@ -26,7 +26,7 @@ namespace ViewInjectionTryout
         {
             services.AddControllersWithViews();
             services.AddTransient<GenderServices>();
-            services.AddTransient<AddressServices>();
+            services.AddSingleton<AddressServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
