@@ -1,0 +1,19 @@
+@using ViewInjectionTryout.Services
+@using ViewInjectionTryout.Models
+@model UserProfile
+@inject GenderServices GdrSvc
+@inject AddressServices AddrSvc
+
+<div>
+    @* see difference between below 2 sections *@
+    @* section 1 *@
+    <p>Name: @Html.DisplayFor(m => m.Name)</p>
+    <p>Gender: @Html.DropDownListFor(m => m.Gender, GdrSvc.ListGenders().Select(g => new SelectListItem() { Text = g, Value = g }))</p>
+    <p>City: @Html.DropDownListFor(m => m.City, AddrSvc.ListCities().Select(c => new SelectListItem() { Text = c, Value = c }))</p>
+    <p>State: @Html.DropDownListFor(m => m.State, AddrSvc.ListStates().Select(s => new SelectListItem() { Text = s, Value = s }))</p>
+    @* section 2 *@
+    <p>Name: @Html.Display("Mike")</p>
+    <p>Gender: @Html.DropDownList("Gender", GdrSvc.ListGenders().Select(g => new SelectListItem() { Text = g, Value = g }))</p>
+    <p>City: @Html.DropDownList("City", AddrSvc.ListCities().Select(c => new SelectListItem() { Text = c, Value = c }))</p>
+    <p>State: @Html.DropDownList("State", AddrSvc.ListStates().Select(s => new SelectListItem() { Text = s, Value = s }))</p>
+</div>
