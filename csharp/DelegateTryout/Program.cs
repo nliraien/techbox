@@ -7,8 +7,8 @@ namespace DelegateTryout
     {
         static void Main(string[] args)
         {
-            // DTryout dt = new DTryout();
-            // dt.DoSomething();
+            DTryout dt = new DTryout();
+            dt.DoSomething();
             
             MyLogger.MyWriteMessage += MyLoggingImplementationOne.MyLogToConsole;
             MyLogger.MyWriteMessage += MyLoggingImplementationTwo.MyLogToConsoleEx;
@@ -111,7 +111,9 @@ namespace DelegateTryout
 
         public static void MyLogMessage(string msg)
         {
-            MyWriteMessage(msg);
+            // MyWriteMessage(msg); this way it will throw exception when there's no implementation being attached.
+            // So use the null handling as below.
+            MyWriteMessage?.Invoke(msg);
         }
     }
 
