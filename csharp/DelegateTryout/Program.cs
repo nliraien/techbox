@@ -7,8 +7,12 @@ namespace DelegateTryout
     {
         static void Main(string[] args)
         {
-            DTryout dt = new DTryout();
-            dt.DoSomething();
+            // DTryout dt = new DTryout();
+            // dt.DoSomething();
+            
+            MyLogger.MyWriteMessage += MyLoggingImplementationOne.MyLogToConsole;
+            MyLogger.MyWriteMessage += MyLoggingImplementationTwo.MyLogToConsoleEx;
+            MyLogger.MyLogMessage("test");
         }
     }
 
@@ -98,6 +102,32 @@ namespace DelegateTryout
             {
                 Console.WriteLine(s);
             }
+        }
+    }
+
+    public static class MyLogger
+    {
+        public static Action<string> MyWriteMessage;
+
+        public static void MyLogMessage(string msg)
+        {
+            MyWriteMessage(msg);
+        }
+    }
+
+    public static class MyLoggingImplementationOne
+    {
+        public static void MyLogToConsole(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+    }
+
+    public static class MyLoggingImplementationTwo
+    {
+        public static void MyLogToConsoleEx(string msg)
+        {
+            Console.WriteLine($"EX: {msg}");
         }
     }
 }
